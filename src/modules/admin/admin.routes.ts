@@ -7,7 +7,7 @@ import {
   getAllUsersAdmin,
 } from "./admin.controller";
 import { authMiddleware } from "../../middlewares/auth.middleware";
-import { roleMiddleware } from "../../middlewares/role.middleware";
+import { roleMiddleware } from "../../src/middlewares/role.middleware";
 
 const router = Router();
 
