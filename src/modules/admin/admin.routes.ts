@@ -6,12 +6,13 @@ import {
   getAllBookingsAdmin,
   getAllUsersAdmin,
 } from "./admin.controller";
-import { authMiddleware } from "../../middlewares/auth.middleware";
-import { roleMiddleware } from "../../src/middlewares/role.middleware";
+
+import { authenticate } from "../../middlewares/auth.middleware";
+import { roleMiddleware } from "../../middlewares/role.middleware";
 
 const router = Router();
 
-router.use(authMiddleware, roleMiddleware("admin"));
+router.use("/", authenticate, roleMiddleware("admin"));
 
 router.get("/dashboard", getAdminDashboard);
 router.get("/users", getAllUsersAdmin);

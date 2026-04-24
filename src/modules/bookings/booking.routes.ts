@@ -1,21 +1,19 @@
 import { Router } from "express";
-import {
-  acceptBooking,
-  createGuestBooking,
-  createUserBooking,
-  declineBooking,
-  getAllBookings,
-  getMyBookings,
-} from "./booking.controller";
-import { authMiddleware } from "../../middlewares/auth.middleware";
 
 const router = Router();
 
-router.post("/", authMiddleware, createUserBooking);
-router.post("/guest", createGuestBooking);
-router.get("/my", authMiddleware, getMyBookings);
-router.get("/", getAllBookings);
-router.patch("/:id/accept", acceptBooking);
-router.patch("/:id/decline", declineBooking);
+router.post("/", (req, res) => {
+  res.status(201).json({
+    success: true,
+    message: "Booking route working",
+  });
+});
+
+router.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Bookings fetched successfully",
+  });
+});
 
 export default router;
